@@ -1,91 +1,51 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Trainer;
-use Illuminate\Http\Request;
-
-class TrainerController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    namespace App\Http\Controllers;
+    use App\Trainer;
+    use Illuminate\Http\Request;
+    class TrainerController extends Controller
     {
-        return 'Hola desde el controlador resource';
-        //se encarga de listar los recursos
-    }
+        public function index()
+        {   
+            $trainers= Trainer::all();
+            return view("trainers.index",compact('trainers'));
+        }
+        public function create(){
+            return view('trainers.create');
+        }
+        public function store(Request $request){   
+            
+            if($request->hasFile('avatar')){ //preguntamos si existe el archivo
+                $file = $request->file('avatar'); //le damos un nombre al archivo
+                $name = time().$file->getClientOriginalName(); //concatenamos el tiempo y el archivo 
+                $file->move(public_path().'/images/',$name); //movemos el archivo a la carpeta con el name
+            }
+            $trainer = new Trainer();
+            $trainer->name = $request->input('nombre');
+            $trainer->town = $request->input('town');
+            $trainer->avatar = $name;  
+            $trainer->slug = $trainer->name;
+            $trainer->idTrainer = $request->input('idTrainer');
+            $trainer->type = $request->input('type');
+            $trainer->description =$request->input('description');  
+            $trainer->save();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('trainers.create');
-        //laravel entra a la carpeta resources/view y buscaa la vista que se llamara de esta forma  
+            return 'Saved';
+        }
+        public function show(Trainer $trainer)
+        {   
+            return view('trainers.show',compact('trainer'));
+        }
+        public function edit($id)
+        {
+            //
+        }
+        public function update(Request $request, $id)
+        {
+            //
+        }
+        public function destroy($id)
+        {
+            //
+        }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {   
-       $trainer = new Trainer();
-        $trainer->name = $$request->input('nombre'); 
-        //posiblemente este malo ****
-        $trainer->save();
-       return 'Saved';
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-}

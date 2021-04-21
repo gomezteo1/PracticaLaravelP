@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+       
         <style>
             html, body {
                 background-color: #fff;
@@ -62,6 +63,7 @@
                 margin-bottom: 30px;
             }
         </style>
+       
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -81,18 +83,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    World Training Pokemon
+                    <img width="300" width="300"  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F5%2F51%2FPokebola-pokeball-png-0.png&f=1&nofb=1">
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laravel.com/docs">News</a>
+                    <a href="https://laracasts.com">Login</a>
+                    <a href="https://laravel-news.com">Register</a>
                 </div>
             </div>
         </div>
