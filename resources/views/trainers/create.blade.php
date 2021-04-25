@@ -9,25 +9,14 @@
           <br>
           <h3 class="links letra btn">CREATE TRAINER</h3>
         </div>
-        <form class="form form-group" method="POST" action="/trainers" enctype="multipart/form-data">
-        @csrf()
-          <div class="form-group">
-            <label for="">Name</label>
-            <input type="text" name="nombre" class="form-control">
-            <label for="">Town</label>
-            <input type="text" name="town" class="form-control">
-            <label for="">Type</label>
-            <input type="text" name="type" class="form-control">
-            <label for="">IDTrainer</label>
-            <input type="number" name="idTrainer" class="form-control">
-            <label for="">Description</label>
-            <input type="textarea" name="description" class="form-control">
-            <label for="">Avatar</label>
-            <br>
-            <input type="file" name="avatar" class="">
-          </div>
-          <button type="submit" class="btn btn-outline-primary">SAVE</button>
-        </form>
+
+        {!! Form::open(['route' => 'trainers.store','method'=>'POST','files'=>true]) !!}
+          @csrf()
+          @include('trainers.form')
+        {!! Form::close() !!}
+      </div>
+        {{-- <form class="form form-group" method="POST" action="/trainers" enctype="multipart/form-data"> --}}
+        {{-- </form> --}}
       </div>
     </div>       
   </div>    

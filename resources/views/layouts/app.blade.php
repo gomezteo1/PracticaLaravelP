@@ -20,8 +20,10 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-primary">
-        <a href="#" class="navbar-brand">World Pokemon</a>
-        <img height="50" width="50" class="rounded-circle" src="https://flyclipart.com/thumb2/pokeball-pokemon-ball-png-images-free-download-168596.png">
+        <a href="{{ url('/trainers') }}" class="navbar-brand">World Pokemon</a>
+    
+        <a href="../trainers/create" class=" btn-floating">        <img height="50" width="50" class="rounded-circle" src="https://flyclipart.com/thumb2/pokeball-pokemon-ball-png-images-free-download-168596.png">
+        </a>
 
     </nav>
     <div class="container">

@@ -3,15 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
+        <title>Center Pokemon</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-       
         <style>
+              .tit {
+                font-family: Pokemon;
+                src: url('/fonts/Pokemon.tff');  
+            }
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -20,35 +18,28 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
             }
-
             .title {
                 font-size: 84px;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -70,7 +61,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/trainer') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -82,13 +73,13 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    World Training Pokemon
+                <div class="title m-b-md" style="">
+                    <h2 class="tit">POKEMON</h2> 
                     <img width="300" width="300"  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F5%2F51%2FPokebola-pokeball-png-0.png&f=1&nofb=1">
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">News</a>
+                    <a href="trainers">News</a>
                     <a href="https://laracasts.com">Login</a>
                     <a href="https://laravel-news.com">Register</a>
                 </div>

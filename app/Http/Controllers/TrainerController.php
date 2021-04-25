@@ -15,23 +15,47 @@ class TrainerController extends Controller
         return view('trainers.create');
     }
     public function store(Request $request){   
-        
+        $dataValidate = $request->validate([
+            'name'=>'required||max 15||min 3',
+            'town'=>'required||max 10||min 5',
+            'avatar'=>'required||image',
+            'slug'=>'required',
+            'idTrainer'=>'required||max 10||min 4',
+            'type'=>'required||max 10||min 3',
+            'description'=>'required||max 50||min 10',
+        ]);
         if($request->hasFile('avatar')){ //preguntamos si existe el archivo
             $file = $request->file('avatar'); //le damos un nombre al archivo
-            $name = time().$file->getClientOriginalName(); //concatenamos el tiempo y el archivo 
-            $file->move(public_path().'/images/',$name); //movemos el archivo a la carpeta con el name
+            $namePhoto = time().$file->getClientOriginalName(); //concatenamos el tiempo y el archivo 
+            $file->move(public_path().'/images/',$namePhoto); //movemos el archivo a la carpeta con el name
+            $trainer = new Trainer();
+            $trainer->name = $request->input('name');
+            $trainer->town = $request->input('town');
+            $trainer->avatar = $namePhoto;  
+            $trainer->slug = $trainer->name;
+            $trainer->idTrainer = $request->input('idTrainer');
+            $trainer->type = $request->input('type');
+            $trainer->description =$request->input('description');  
+            $trainer->save();
+            
+            
+        }else{
+            $trainer = new Trainer();
+            $trainer->name = $request->input('name');
+            $trainer->town = $request->input('town');
+            $trainer->avatar = 'no tiene';  
+            $trainer->slug = $trainer->name;
+            $trainer->idTrainer = $request->input('idTrainer');
+            $trainer->type = $request->input('type');
+            $trainer->description =$request->input('description');  
+            $trainer->save();
         }
-        $trainer = new Trainer();
-        $trainer->name = $request->input('nombre');
-        $trainer->town = $request->input('town');
-        $trainer->avatar = $name;  
-        $trainer->slug = $trainer->name;
-        $trainer->idTrainer = $request->input('idTrainer');
-        $trainer->type = $request->input('type');
-        $trainer->description =$request->input('description');  
-        $trainer->save();
+        
+        $trainers= Trainer::all();
+        return view("trainers.index",compact('trainers'));
 
-        return 'Saved';
+
+        
     }
     public function show(Trainer $trainer)
     {   
@@ -44,6 +68,7 @@ class TrainerController extends Controller
 
     }
     public function update(Request $request, Trainer $trainer){
+     
         if($request->hasFile('avatar')){ //preguntamos si existe el archivo
             $file = $request->file('avatar'); //le damos un nombre al archivo
             $name = time().$file->getClientOriginalName(); //concatenamos el tiempo y el archivo 
