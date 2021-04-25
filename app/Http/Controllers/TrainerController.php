@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Trainer;
+use App\Illuminate\Http\Request\StoreTrainerRequest;
 
 class TrainerController extends Controller
 {
@@ -14,16 +15,16 @@ class TrainerController extends Controller
     public function create(){
         return view('trainers.create');
     }
-    public function store(Request $request){   
-        $dataValidate = $request->validate([
-            'name'=>'required||max 15||min 3',
-            'town'=>'required||max 10||min 5',
-            'avatar'=>'required||image',
-            'slug'=>'required',
-            'idTrainer'=>'required||max 10||min 4',
-            'type'=>'required||max 10||min 3',
-            'description'=>'required||max 50||min 10',
-        ]);
+    public function store(StoreTrainerRequest $request){   
+        // $dataValidate = $request->validate([
+        //     'name'=>'required||max 15||min 3',
+        //     'town'=>'required||max 10||min 5',
+        //     'avatar'=>'required||image',
+        //     'slug'=>'required',
+        //     'idTrainer'=>'required||max 10||min 4',
+        //     'type'=>'required||max 10||min 3',
+        //     'description'=>'required||max 50||min 10',
+        // ]);
         if($request->hasFile('avatar')){ //preguntamos si existe el archivo
             $file = $request->file('avatar'); //le damos un nombre al archivo
             $namePhoto = time().$file->getClientOriginalName(); //concatenamos el tiempo y el archivo 
