@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title','TrainerInfo')
-
 @section('TrainerInfo')
     <style>
         .sombra {text-shadow: 
@@ -38,8 +36,11 @@
                     <p class="card-text"><span class="text-left"><h5>IDTRAINER</h5></span>{{$trainer->idTrainer}}.</p>
                     <p class="card-text"><span class="text-left"><h5>DESCRIPTION</h5></span>{{$trainer->description}}.</p>
                 </div>
-                <div>
-                    <a aling="center" href="/trainers/{{$trainer->slug}}/edit" class="button4 btn btn-outline-secondary">Edit</a>
+                <div class="" style="background-color:#E6E6FA;">
+                       <a class="col-1 button4 btn btn-outline-secondary"  href="/trainers/{{$trainer->slug}}/edit">Edit</a>
+                        {!!Form::open(['route'=>['trainers.destroy', $trainer->slug], 'method'=>'DELETE' ]) !!}
+                            {!!Form::submit('Delete',['class'=>'col-1 btn btn-outline-secondary']) !!}
+                        {!!Form::close() !!}
                 </div> 
             </div>
         </div>       

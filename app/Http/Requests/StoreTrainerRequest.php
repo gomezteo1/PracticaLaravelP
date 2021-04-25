@@ -12,10 +12,9 @@ class StoreTrainerRequest extends FormRequest
     
     public function rules(){
         return [
-            'name'=>'required||max: 10||min: 3',
-            'town'=>'required||max: 10||min: 5',
+            'name'=>'required||max: 20||min: 3',
+            'town'=>'required||max: 20||min: 5',
             'avatar'=>'required||image',
-            'slug'=>'required',
             'idTrainer'=>'required||max: 10||min: 4',
             'type'=>'required||max: 10||min: 3',
             'description'=>'required||max: 50||min: 10',

@@ -40,8 +40,6 @@ class TrainerController extends Controller
             $trainer->type = $request->input('type');
             $trainer->description =$request->input('description');  
             $trainer->save();
-            
-            
         }else{
             $trainer = new Trainer();
             $trainer->name = $request->input('name');
@@ -53,25 +51,18 @@ class TrainerController extends Controller
             $trainer->description =$request->input('description');  
             $trainer->save();
         }
-        
         $trainers= Trainer::all();
         return view("trainers.index",compact('trainers'));
-
-
-        
     }
-    public function show(Trainer $trainer)
-    {   
+    public function show(Trainer $trainer){   
     //  $trainer = Trainer::where('slug','=',$slug)->firstOrFail();   
      return view('trainers.show',compact('trainer'));
     }
-    public function edit(Trainer $trainer)
-    {
+    public function edit(Trainer $trainer){
         return view('trainers.edit',compact('trainer'));
 
     }
     public function update(Request $request, Trainer $trainer){
-     
         if($request->hasFile('avatar')){ //preguntamos si existe el archivo
             $file = $request->file('avatar'); //le damos un nombre al archivo
             $name = time().$file->getClientOriginalName(); //concatenamos el tiempo y el archivo 
@@ -87,9 +78,12 @@ class TrainerController extends Controller
         $trainers= Trainer::all();
         return view("trainers.index",compact('trainers'));
     }
-    public function destroy($id)
-    {
-        //
+    public function destroy(Trainer $trainer){
+        $file_path = public_path().'/images/'.$trainer->avatar;
+        \File::delete($file_path);
+        $trainer->delete();
+        $trainers= Trainer::all();
+        return view("trainers.index",compact('trainers'));
     }
 }
 
