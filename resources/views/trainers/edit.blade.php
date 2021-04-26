@@ -14,10 +14,6 @@
           @include('trainers.form')
         {!! Form::close() !!}
 
-        {{-- <form class="form form-group" method="POST" action="/trainers/{{$trainer->slug}}" enctype="multipart/form-data">
-            @method('PUT')
-            @csrf() --}}
-        {{-- </form> --}}
       </div>
     </div>       
   </div>    

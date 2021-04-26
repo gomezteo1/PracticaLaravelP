@@ -10,13 +10,10 @@
             box-shadow: 2px 2px 10px #666;
         }
     </style>
-    
     <br>
     <h1 class="s1" >Trainers</h1>
     <br>
-     @if(session('Status'))
-            <div class="alert alert-warning">{{session('Status')}} </div>
-    @endif
+    @include('common.alerts')
     <div class="row">
         @foreach ($trainers as $trainer)
             <div class=" col-sm-3 col-3">

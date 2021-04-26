@@ -10,11 +10,7 @@
           <h3 class="links letra btn">CREATE TRAINER</h3>
         </div> 
         <br>
-        @if($errors->any())
-            @foreach($errors->all() as $error)
-              <p aling="center" class="btn btn-warning">¡{{  $error  }}!</p>
-            @endforeach
-        @endif
+        @include('common.errors')
         {!! Form::open(['route' => 'trainers.store','method'=>'POST','files'=>true]) !!}
           @csrf()
           @include('trainers.form')
