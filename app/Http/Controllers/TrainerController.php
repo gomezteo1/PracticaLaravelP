@@ -6,9 +6,8 @@ use App\Trainer;
 use App\Http\Requests\StoreTrainerRequest;
 
 class TrainerController extends Controller
-{
-    public function index()
-    {   
+{   
+    public function index(){   
         $trainers= Trainer::all();
         return view("trainers.index",compact('trainers'));
     }
@@ -16,17 +15,6 @@ class TrainerController extends Controller
         return view('trainers.create');
     }
     public function store(StoreTrainerRequest $request){  
-
-        // $dataValidate = $request->validate([
-        //     'name'=>'required||max: 10||min: 3',
-        //     'town'=>'required||max: 10||min: 5',
-        //     'avatar'=>'required||image',
-        //     'slug'=>'required',
-        //     'idTrainer'=>'required||max: 10||min: 4',
-        //     'type'=>'required||max: 10||min: 3',
-        //     'description'=>'required||max: 50||min: 10',
-        // ]);
-
         if($request->hasFile('avatar')){ //preguntamos si existe el archivo
             $file = $request->file('avatar'); //le damos un nombre al archivo
             $namePhoto = time().$file->getClientOriginalName(); //concatenamos el tiempo y el archivo 
@@ -51,12 +39,14 @@ class TrainerController extends Controller
             $trainer->description =$request->input('description');  
             $trainer->save();
         }
+        // $color = 'alert alert-succes';
         $trainers= Trainer::all();
-        return view("trainers.index",compact('trainers'));
+        return redirect()->route("trainers.index", [$trainer])->with('Status','Trainer Create Correctly');
+
+        // ->with('color',$color);
     }
     public function show(Trainer $trainer){   
-    //  $trainer = Trainer::where('slug','=',$slug)->firstOrFail();   
-     return view('trainers.show',compact('trainer'));
+        return view('trainers.show',compact('trainer'));
     }
     public function edit(Trainer $trainer){
         return view('trainers.edit',compact('trainer'));
@@ -75,15 +65,18 @@ class TrainerController extends Controller
             $trainer->fill($request->all());
             $trainer->save();
         }
-        $trainers= Trainer::all();
-        return view("trainers.index",compact('trainers'));
+        $color = 'alert alert-succes';
+        return redirect()->route("trainers.show", [$trainer])->with('Status','Trainer Update Correctly');
+        // ->with('color',$color);
+
     }
     public function destroy(Trainer $trainer){
         $file_path = public_path().'/images/'.$trainer->avatar;
         \File::delete($file_path);
         $trainer->delete();
-        $trainers= Trainer::all();
-        return view("trainers.index",compact('trainers'));
+        $color = 'alert alert-warning'; 
+        return redirect()->route("trainers.index")->with('Status','Trainer Delete Correctly');
+        // ->compact('color',$color);
     }
 }
 

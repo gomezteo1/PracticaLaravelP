@@ -8,7 +8,7 @@
         <div class="class"  style="background-color:#F0F8FF;">
           <br>
           <h3 class="links letra btn">CREATE TRAINER</h3>
-        </div>
+        </div> 
         <br>
         @if($errors->any())
             @foreach($errors->all() as $error)

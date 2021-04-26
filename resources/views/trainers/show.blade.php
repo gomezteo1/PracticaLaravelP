@@ -21,10 +21,15 @@
                 text-transform: uppercase;
             }
     </style>
+        
+
     <br>
     <div class="container " aling="center">
         <div class="card sombra" style="width: 62rem;">
             <div class="card-body card-center">
+             @if(session('Status'))
+                <div class="alert alert-success">{{session('Status')}} </div>
+            @endif
                 <div class="class"  style="background-color:#F0F8FF;">
                     <a class="links letra btn">PERSONAL DATA</a>
                 </div>
