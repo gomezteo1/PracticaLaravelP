@@ -1,12 +1,7 @@
 <?php
-Route::get('/', function(){
-    return view('welcome'); //esta ruta es la raiz del proyecto
-});
+Route::get('/', function(){return view('welcome'); });
 
 Route::resource('trainers','TrainerController');
-
-
-
 
 Auth::routes();
 

@@ -20,9 +20,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+   
     <div id="app">
+        
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -70,6 +73,7 @@
                                     </form>
                                 </div>
                             </li>
+                         
                         @endguest
                     </ul>
                 </div>
@@ -77,7 +81,12 @@
         </nav>
 
         <main class="py-4">
+           
             @yield('content')
+            @yield('Trainerlist')
+            @yield('TrainerCreate')
+            @yield('TrainerInfo')
+            @yield('TrainerEdit')
         </main>
     </div>
 </body>
