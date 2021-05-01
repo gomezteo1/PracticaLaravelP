@@ -61,7 +61,8 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/trainer') }}">Home</a>
+                        <a href="{{ url('/trainers') }}">Trainers</a>
+                        <a href="#">Pokemon`s</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -78,11 +79,11 @@
                     <img width="300" width="300"  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F5%2F51%2FPokebola-pokeball-png-0.png&f=1&nofb=1">
                 </div>
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="trainers">News</a>
                     <a href="https://laracasts.com">Login</a>
                     <a href="https://laravel-news.com">Register</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </body>

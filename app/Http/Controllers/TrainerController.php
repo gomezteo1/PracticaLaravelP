@@ -7,8 +7,12 @@ use App\Http\Requests\StoreTrainerRequest;
 
 class TrainerController extends Controller
 {   
-    public function index(){   
-        $trainers= Trainer::all();
+    public function index(Request $request){   
+
+        $request->user()->authorizeRoles(['admin','user']);
+
+        //....
+        $trainers = Trainer::all();
         return view("trainers.index",compact('trainers'));
     }
     public function create(){

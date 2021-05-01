@@ -80,13 +80,14 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="container">
            
             @yield('content')
             @yield('Trainerlist')
             @yield('TrainerCreate')
             @yield('TrainerInfo')
             @yield('TrainerEdit')
+            @yield('common.401')
         </main>
     </div>
 </body>
